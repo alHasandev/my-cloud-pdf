@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Cloud PDF Demo</title>
+  </head>
+  <body>
+    <h1>Testing CloudPDF</h1>
+    <div id="viewer" style="width: 100%; height: 500px"></div>
+    <script
+      type="text/javascript"
+      src="https://cloudpdf.io/viewer.min.js"
+    ></script>
+    <script>
+      const config = {
+        documentId: 'f1387cee-5012-4ab9-ae13-dc7b42bbf66a',
+        darkMode: true,
+        // token: '', //add your server side generated security token or change your document permission to public
+      };
+      CloudPDF(config, document.getElementById('viewer')).then(
+        (instance) => {}
+      );
+    </script>
+  </body>
+</html>
