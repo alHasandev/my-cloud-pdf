@@ -5,7 +5,7 @@ const myState = {
 };
 
 // Get pdf from server
-fetch('http://localhost:5000/pdf', {
+fetch('https://my-cloud-pdf.herokuapp.com/pdf', {
   method: 'POST',
 })
   .then((data) => data.blob())
