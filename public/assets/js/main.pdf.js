@@ -5,18 +5,14 @@ const myState = {
 };
 
 // Get pdf from server
-fetch('http://localhost:3000/pdf', {
+fetch('http://localhost:5000/pdf', {
   method: 'POST',
 })
   .then((data) => data.blob())
   .then(async (response) => {
     const pdfData = await blobToBase64(response);
-
-    pdfjsLib.getDocument(pdfData).then((pdf) => {
-      myState.pdf = pdf;
-      renderPDF('#pdf_renderer');
-    });
-  });
+    renderPDF('#pdf_renderer', pdfData);
+  })
 
 
 document.getElementById('go_previous').addEventListener('click', (e) => {
@@ -72,3 +68,5 @@ document.getElementById('zoom_out').addEventListener('click', (e) => {
   myState.zoom -= 0.5;
   renderPDF('#pdf_renderer');
 });
+
+preventDigitalWebPiracy();

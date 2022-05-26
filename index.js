@@ -4,11 +4,15 @@ const fs = require("fs");
 const cors = require('cors');
 
 const app = express()
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const HOST = `http://localhost`;
 
-const dirPath = path.join(__dirname, "public/pdfs");
+const pdfDir = path.join(__dirname, "public/pdfs");
+const getAbsolutePath = (query = "") => {
+  return path.join(__dirname, query);
+}
 const fileName = 'JSR.pdf';
-const files = fs.readdirSync(dirPath).map(name => {
+const files = fs.readdirSync(pdfDir).map(name => {
   return {
     name: path.basename(name, ".pdf"),
     url: `/pdfs/${name}`
@@ -20,11 +24,15 @@ app.use(cors());
 app.use(express.static("public"));
 
 app.get('/', function (req, res) {
-  res.send('Hello World')
+  res.sendFile(getAbsolutePath('index.html'));
+})
+
+app.get('/pdf', (req, res) => {
+  res.sendFile(getAbsolutePath('pdfjs.html'));
 })
 
 app.post('/pdf', (req, res) => {
-  res.sendFile(`${dirPath}/${fileName}`);
+  res.sendFile(`${pdfDir}/${fileName}`);
 })
 
-app.listen(PORT, () => console.log(`app listening on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`app listening on ${HOST}:${PORT}`));

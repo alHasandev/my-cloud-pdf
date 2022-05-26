@@ -23,6 +23,7 @@
       }
 
       #my_pdf_viewer {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -30,6 +31,22 @@
       }
       #pdf_renderer {
         max-width: 100%;
+      }
+
+      /* Controls */
+      #navigation_controls {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        max-width: 100%;
+      }
+      #zoom_controls {
+        position: absolute;
+        left: 1rem;
+        bottom: 50%;
+        transform: translateY(-50%);
       }
     </style>
   </head>
@@ -52,10 +69,10 @@
     </div>
 
     <!-- Load PDF.js Scripts -->
-    <script src="./blob-to-base64.js"></script>
-    <script src="./prevent-digital-web-piracy.js"></script>
-    <script src="./render-pdf.js"></script>
-    <script src="./my-popup.js"></script>
-    <script src="./main.pdf.js"></script>
+    <script src="/assets/js/blob-to-base64.js"></script>
+    <script src="/assets/js/prevent-digital-web-piracy.js"></script>
+    <script src="/assets/js/render-pdf.js"></script>
+    <script src="/assets/js/my-popup.js"></script>
+    <script src="/assets/js/main.pdf.js"></script>
   </body>
 </html>
