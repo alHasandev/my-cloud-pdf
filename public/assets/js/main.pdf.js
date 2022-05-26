@@ -38,10 +38,10 @@ fetch('https://my-cloud-pdf.herokuapp.com/pdf', {
         if (myState.pdf == null) return;
 
         // Get key code
-        var code = e.keyCode ? e.keyCode : e.which;
+        var code = e.key ? e.key : e.code;
 
         // If key code matches that of the Enter key
-        if (code == 13) {
+        if (code == 'Enter') {
           var desiredPage =
             document.getElementById('current_page').valueAsNumber;
 
